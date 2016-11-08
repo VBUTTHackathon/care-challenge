@@ -22,7 +22,9 @@ module.exports.http = {
   ****************************************************************************/
 
   middleware: {
-
+    flash: require('express-flash')(),
+    passportInit: require('passport').initialize(),
+    passportSession: require('passport').session(),
   /***************************************************************************
   *                                                                          *
   * The order in which middleware should be run for HTTP request. (the Sails *
@@ -30,23 +32,26 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    // order: [
-    //   'startRequestTimer',
-    //   'cookieParser',
-    //   'session',
-    //   'myRequestLogger',
-    //   'bodyParser',
-    //   'handleBodyParserError',
-    //   'compress',
-    //   'methodOverride',
-    //   'poweredBy',
-    //   '$custom',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    //   '404',
-    //   '500'
-    // ],
+    order: [
+     'startRequestTimer',
+     'cookieParser',
+     'session',
+     'passportInit', // <==== passport HTTP middleware should run after "session"
+     'passportSession',
+     'flash',
+     //'myRequestLogger',
+     'bodyParser',
+     'handleBodyParserError',
+     'compress',
+     'methodOverride',
+     //'poweredBy',
+     //'$custom',
+     'router',
+     'www',
+    // 'favicon',
+     '404',
+     '500'
+    ],
 
   /****************************************************************************
   *                                                                           *
