@@ -8,7 +8,9 @@
 module.exports = {
 
     attributes: {
-        //pending: {collection: 'User'},
+        email:{
+          type: 'string'
+        },
         username:{
           type: 'string'
         },
@@ -18,52 +20,21 @@ module.exports = {
         lastName:{
           type: 'string'
         },
-        active: {
-            type: 'boolean',
-            defaultsTo: false
+        fullName:{
+          type: 'string'
         },
-        unlocked: {
-            collection: 'User'
+        state: {
+            type: 'string',
+            enum: ['none','chose','chosen','confirmed'],
+            defaultsTo: 'none'
         },
-        followers: {
-            collection: 'User'
+        duo: {
+            model: 'duo'
         },
         toJSON: function() {
             var obj = this.toObject();
             delete obj.password;
             return obj;
-        },
-        unlock: function (toUnlock) {
-            if(toUnlock.id === this.id){
-                throw new CustomError("You can't tag yourself.");
-            }
-            return User.findOne(this.id)
-                .populate('unlocked', {where: {id: toUnlock.id}})
-                .then(function (user) {
-                    if (user && user.unlocked.length === 0) {
-                        user.unlocked.add(toUnlock);
-                         return user.save().then(function(){
-                            return user;
-                        });
-                    }
-                    throw new CustomError("You have already unlocked " + toUnlock.name,user);
-                });
-        },
-        addFollower: function (follower) {
-            if(follower.id === this.id){
-                throw new CustomError("You can't tag yourself.");
-            }
-            return User.findOne(this.id)
-                .populate('followers', {where: {id: follower.id}})
-                .then(function (user) {
-                    if (user && user.followers.length === 0) {
-                        user.followers.add(follower);
-                        return user.save().then(function(){
-                            return user;
-                        });
-                    }
-                    throw new CustomError("You have already followed " + this.name);
-                });
         }
     }
 };
