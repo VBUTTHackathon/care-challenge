@@ -23,6 +23,10 @@ module.exports = {
         fullName:{
           type: 'string'
         },
+        isAdmin:{
+          type: 'boolean',
+          defaultsTo: false
+        },
         state: {
             type: 'string',
             enum: ['none','chose','chosen','confirmed'],
