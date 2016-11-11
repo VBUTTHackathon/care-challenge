@@ -9,18 +9,13 @@ module.exports = {
 
     attributes: {
         email:{
-          type: 'string'
-        },
-        username:{
-          type: 'string'
+          type: 'string',
+          required : true
         },
         firstName:{
           type: 'string'
         },
         lastName:{
-          type: 'string'
-        },
-        fullName:{
           type: 'string'
         },
         isAdmin:{

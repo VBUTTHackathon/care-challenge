@@ -26,11 +26,11 @@ module.exports = {
         return res.redirect('/login');
       }
       User.findOne({
-          username: ldapUser.uid
+          email: ldapUser.mail
         }).then(function (user) {
           if (!user) {
             return User.create({
-              username: ldapUser.uid,
+              email: ldapUser.mail,
               firstName: ldapUser.givenName,
               lastName: ldapUser.sn
             });

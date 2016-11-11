@@ -29,7 +29,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "nodemon app.js --models.migrate=alter"
+    "start": "nodemon  app.js --models.migrate=alter"
   },
   "main": "app.js",
   "repository": {
