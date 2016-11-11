@@ -24,11 +24,12 @@
     "passport-ldapauth": "^0.6.0",
     "rc": "1.0.1",
     "sails": "~0.12.4",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+    "sails-mysql": "^0.11.5"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "nodemon app.js --models.migrate=safe"
+    "start": "nodemon app.js --models.migrate=alter"
   },
   "main": "app.js",
   "repository": {
