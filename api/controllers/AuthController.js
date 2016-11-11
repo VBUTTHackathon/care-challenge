@@ -44,7 +44,11 @@ module.exports = {
             req.flash('success', {
               msg: 'Success! You are logged in.'
             });
-            res.redirect(req.session.returnTo || '/');
+            if(user.isAdmin){
+              return res.redirect(req.session.returnTo || '/admin');
+            } else {
+              return res.redirect(req.session.returnTo || '/');
+            }
           });
         })
     })(req, res, next);
