@@ -9,8 +9,7 @@ module.exports = {
 
     attributes: {
         email:{
-          type: 'string',
-          required : true
+          type: 'string'
         },
         firstName:{
           type: 'string'
@@ -32,7 +31,8 @@ module.exports = {
         },
         toJSON: function() {
             var obj = this.toObject();
-            return {username:obj.username,
+            return {
+                    email:obj.email,
                     firstName:obj.firstName,
                     lastName:obj.lastName};
         }

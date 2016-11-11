@@ -6,7 +6,8 @@ passport.serializeUser(function (user, next) {
 });
 
 passport.deserializeUser(function (user, next) {
-  User.findOne(user.id, next);
+  next(null,User.findOne({email: user.email}))
+
 });
 
 passport.loadStrategies = function () {

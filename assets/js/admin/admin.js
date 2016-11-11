@@ -5,7 +5,7 @@ $(document).ready(function() {
       "cache": true
     },
     "columns": [
-      { "data": "username" },
+      { "data": "email" },
       { "data": "firstName" },
       { "data": "lastName" }
     ]
