@@ -36,7 +36,10 @@ module.exports.routes = {
   '/admin': 'AdminController.index',
   'get /login': { view: 'login' },
   'post /login': 'AuthController.login',
-  '/logout': 'AuthController.logout'
+  '/logout': 'AuthController.logout',
+  '/partner/:id': 'DuoController.pickPartner',
+  '/duo/confirm': 'DuoController.confirm',
+  '/duo/cancel': 'DuoController.cancel'
 
 
   /***************************************************************************
