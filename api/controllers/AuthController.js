@@ -37,7 +37,7 @@ module.exports = {
           }
           return user;
         }).then(function (user) {
-          req.logIn(user, (err) => {
+          req.logIn(user, function(err) {
             if (err) {
               return next(err);
             }
