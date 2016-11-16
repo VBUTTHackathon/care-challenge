@@ -16,7 +16,7 @@ module.exports = {
     },
     state: {
       type: 'string',
-      enum: ['oneside', 'confirmed'],
+      enum: ['oneside', 'twosides'],
       defaultsTo: 'oneside'
     },
     date: {
