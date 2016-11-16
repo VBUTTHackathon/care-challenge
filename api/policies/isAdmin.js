@@ -1,5 +1,5 @@
 module.exports = function(req, res, next) {
-  if (req.session.passport.user.isAdmin) {
+  if (req.user.isAdmin) {
     return next();
   }
   else{
