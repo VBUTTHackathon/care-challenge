@@ -32,15 +32,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'homepage' },
+  '/': 'HomeController.index',
   '/admin': 'AdminController.index',
   'get /login': { view: 'login' },
   'post /login': 'AuthController.login',
   '/logout': 'AuthController.logout',
+  '/users': 'UserController.users',
   '/partner/:id': 'DuoController.pickPartner',
   '/duo/confirm': 'DuoController.confirm',
   '/duo/cancel': 'DuoController.cancel'
-
 
   /***************************************************************************
   *                                                                          *
