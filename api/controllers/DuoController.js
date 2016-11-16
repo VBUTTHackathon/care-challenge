@@ -5,6 +5,14 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+<<<<<<< HEAD
+module.exports = {
+    duos:function(req, res) {
+      //Duo.find().populate('user')
+    }
+};
+
+=======
 function getUserById(id) {
   return User.findOne(id)
     .then(function (user) {
@@ -113,3 +121,4 @@ module.exports = {
       });
   }
 };
+>>>>>>> origin/master
