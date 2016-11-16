@@ -1,8 +1,8 @@
-module.exports = function(req, res, next) {
+module.exports = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
-  }
-  else{
+  } else {
+    req.session.returnTo = req.url;
     return res.redirect('/login');
   }
 };

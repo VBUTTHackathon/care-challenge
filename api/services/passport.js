@@ -2,11 +2,11 @@ var passport = require('passport');
 var LdapStrategy = require('passport-ldapauth').Strategy;
 
 passport.serializeUser(function (user, next) {
-  next(null, user.id);
+  next(null, user);
 });
 
-passport.deserializeUser(function (id, next) {
-  User.findOne(id, next);
+passport.deserializeUser(function (user, next) {
+  User.findOne(user.id, next);
 });
 
 passport.loadStrategies = function () {
