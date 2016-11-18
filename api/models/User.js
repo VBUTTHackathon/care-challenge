@@ -40,7 +40,9 @@ module.exports = {
             return {id: obj.id,
                     username: obj.username,
                     firstName: obj.firstName,
-                    lastName: obj.lastName};
+                    lastName: obj.lastName,
+                    button: '<input type="button" onClick="pickPartner('+obj.id+')" id="picker" class="btn btn-info picker" value="Pick as a partner">'
+            };
         }
     }
 };
