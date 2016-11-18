@@ -37,9 +37,10 @@ module.exports = {
         },
         toJSON: function() {
             var obj = this.toObject();
-            return {username:obj.username,
-                    firstName:obj.firstName,
-                    lastName:obj.lastName};
+            return {id: obj.id,
+                    username: obj.username,
+                    firstName: obj.firstName,
+                    lastName: obj.lastName};
         }
     }
 };
