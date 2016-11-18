@@ -11,7 +11,7 @@ module.exports = {
     return User.find({state:"none"})
           .then(function(users){
             res.json({data:users.filter(function(user){
-              return user.id;/* != req.user.id;*/
+              return user.id != req.user.id;
             })});
           });
   }
