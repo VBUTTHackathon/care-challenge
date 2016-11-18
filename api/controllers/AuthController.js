@@ -26,7 +26,7 @@ module.exports = {
         return res.redirect('/login');
       }
       User.findOne({
-          username: ldapUser.uid
+          username: ldapUser.samAccountName
         }).then(function (user) {
           if (!user) {
             return User.create({
