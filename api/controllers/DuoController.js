@@ -57,7 +57,6 @@ module.exports = {
         picker.duo = null;
         return picker.save()
           .then(function () {
-          console.log(duo);
             return  Duo.destroy(duo);
           });
       }).then(function () {
