@@ -16,6 +16,22 @@ function getUserById(id) {
 };
 
 module.exports = {
+  duos: function (req, res) {
+    return Duo.find().populate('picker').populate('picked')
+      .then(function (duos) {
+        res.json({
+          data: duos.map(function (duo) {
+            var name1 = duo.picker.firstName + " " + (duo.picker.lastName || "");
+            var name2 = duo.picked.firstName + " " + (duo.picked.lastName || "");
+            return { partnerId1: duo.picker.id,
+                     partnerId2: duo.picked.id,
+                     partnerName1: name1,
+                     partnerName2: name2 };
+          })
+        });
+      });
+  },
+
   confirm: function (req, res) {
     var currUserId = req.user.id;
     return User.findOne(currUserId).populate('duo')
@@ -57,7 +73,6 @@ module.exports = {
         picker.duo = null;
         return picker.save()
           .then(function () {
-          console.log(duo);
             return  Duo.destroy(duo);
           });
       }).then(function () {
