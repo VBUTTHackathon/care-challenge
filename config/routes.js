@@ -40,7 +40,8 @@ module.exports.routes = {
   '/users': 'UserController.users',
   '/partner/:id': 'DuoController.pickPartner',
   '/duo/confirm': 'DuoController.confirm',
-  '/duo/cancel': 'DuoController.cancel'
+  '/duo/cancel': 'DuoController.cancel',
+  '/duos': 'DuoController.duos',
 
   /***************************************************************************
   *                                                                          *
