@@ -7,7 +7,10 @@
 
 module.exports = {
   index: function(req, res) {
-     res.view('homepage');
+    if(req.user.isAdmin){
+      return res.redirect('/admin');
+    }
+    return res.view('homepage');
   }
 };
 
