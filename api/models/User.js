@@ -43,6 +43,20 @@ module.exports = {
                     lastName: obj.lastName,
                     button: '<input type="button" onClick="pickPartner('+obj.id+')" id="picker" class="btn btn-info picker" value="Pick as a partner">'
             };
+        },
+        getPartner: function() {
+          if(this.duo){
+            return Duo.findOne(this.duo)
+              .populate('picker')
+              .populate('picked')
+              .then(function(duo){
+                if(duo){
+                  return this.id === duo.picker.id ? duo.picked : duo.picker;
+                }
+                return;
+              });
+          }
+          return;
         }
     }
 };
