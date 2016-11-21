@@ -10,7 +10,7 @@ module.exports = {
     if(req.user.isAdmin){
       return res.redirect('/admin');
     }
-    return res.view('homepage');
+    return res.view('homepage',{state:req.user.state});
   }
 };
 
