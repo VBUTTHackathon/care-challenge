@@ -33,6 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': 'HomeController.index',
+  '/livecheck': 'HomeController.livecheck',
   '/admin': 'AdminController.index',
   'get /login': { view: 'login' },
   'post /login': 'AuthController.login',

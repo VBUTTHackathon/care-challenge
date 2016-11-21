@@ -48,6 +48,7 @@ module.exports.policies = {
     },
     HomeController: {
       '*': false,
+      livecheck: true,
       index: ['isAuthenticated']
     }
   // RabbitController: {

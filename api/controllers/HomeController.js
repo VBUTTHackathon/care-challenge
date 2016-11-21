@@ -11,6 +11,9 @@ module.exports = {
       return res.redirect('/admin');
     }
     return res.view('homepage',{state:req.user.state});
+  },
+  livecheck: function(req, res) {
+    return res.send(200);
   }
 };
 
