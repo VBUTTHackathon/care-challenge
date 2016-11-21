@@ -53,12 +53,23 @@ module.exports = {
         return res.json(200, {
           message: "You have confirmed your Duo partner."
         });
-      });
+      }).catch(CustomError, function (e) {
+        console.log(e);
+        return res.json(404, {
+          error: e.message
+        });
+      }).catch(function (e) {
+        console.log(e);
+        return res.send(500);
+      });;
   },
   cancel: function (req, res) {
     var currUserId = req.user.id;
     return User.findOne(currUserId).populate('duo')
       .then(function (currUser) {
+        if (!currUser.duo) {
+          throw new CustomError("Could not find Duo.");
+        }
         var duoId = currUser.duo.id;
         currUser.state = "none";
         currUser.duo = null;
@@ -79,6 +90,14 @@ module.exports = {
         return res.json(200, {
           message: "You have canceled your Duo partner."
         });
+      }).catch(CustomError, function (e) {
+        console.log(e);
+        return res.json(404, {
+          error: e.message
+        });
+      }).catch(function (e) {
+        console.log(e);
+        return res.send(500);
       });
   },
   pickPartner: function (req, res) {
