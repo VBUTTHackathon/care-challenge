@@ -78,14 +78,14 @@ module.exports = {
         currUser.duo = null;
         return currUser.save()
           .then(function () {
-            return Duo.findOne(duoId).populate('picked');
+            return Duo.findOne(duoId).populate('picked').populate('picker');
           });
       }).then(function (duo) {
         var duoId = duo.id;
-        var picked = duo.picked;
-        picked.state = "none";
-        picked.duo = null;
-        return picked.save()
+        var partner = duo.picked.id === currUserId ? duo.picker : duo.picked;
+        partner.state = "none";
+        partner.duo = null;
+        return partner.save()
           .then(function () {
             return  Duo.destroy(duoId);
           });

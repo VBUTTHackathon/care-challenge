@@ -42,6 +42,14 @@ setTimeout(function sunrise () {
     <p>Waiting for your Duo partner's confirmation.</p><br><br>
     <small>If you changed your mind you can <a href="/duo/cancel">cancel</a> your choice.</small>
     <%}%>
+    <%if (state==="chosen") {%>
+    <h3>You have been selected as a partner by <% %></h3>
+    <p>Please confirm your partnership.</p><br><br>
+     <a href="/duo/cancel" class="btn btn-danger">Cancel</a> <a href="/duo/confirm"  class="btn btn-success">Confirm</a>
+    <%}%>
+     <%if (state==="confirmed") {%>
+    <h3>Your Duo is confirmed, you can't change it now.</h3>
+    <%}%>
   </div>
 </div>
 <script type="text/javascript">
