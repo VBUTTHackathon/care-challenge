@@ -50,9 +50,12 @@ module.exports = {
             return duo.save();
           });
       }).then(function () {
+       if (req.wantsJSON) {
         return res.json(200, {
           message: "You have confirmed your Duo partner."
         });
+       }
+      return res.redirect('/')
       }).catch(CustomError, function (e) {
         console.log(e);
         return res.json(404, {
@@ -87,9 +90,12 @@ module.exports = {
             return  Duo.destroy(duoId);
           });
       }).then(function () {
+      if (req.wantsJSON) {
         return res.json(200, {
           message: "You have canceled your Duo partner."
         });
+      }
+      return res.redirect('/')
       }).catch(CustomError, function (e) {
         console.log(e);
         return res.json(404, {
@@ -133,9 +139,12 @@ module.exports = {
                     return partner.save();
                   });
               }).then(function () {
+              if (req.wantsJSON) {
                 return res.json(200, {
                   message: "You have selected " + partner.username + " as a partner, waiting for his/her confirmation."
                 });
+              }
+              return res.redirect('/');
               });
           });
 
