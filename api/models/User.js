@@ -44,17 +44,18 @@ module.exports = {
                     username: obj.username,
                     firstName: obj.firstName,
                     lastName: obj.lastName,
-                    button: '<input type="button" onClick="pickPartner('+obj.id+')" id="picker" class="btn btn-info picker" value="Pick as a partner">'
+                    button: '<input type="button" onClick="pickPartner('+obj.id+')" id="picker-'+obj.id+'" class="btn btn-info picker" value="Pick as a partner">'
             };
         },
         getPartner: function() {
-          if(this.duo){
-            return Duo.findOne(this.duo)
+          var self = this;
+          if(self.duo){
+            return Duo.findOne(self.duo)
               .populate('picker')
               .populate('picked')
               .then(function(duo){
                 if(duo){
-                  return this.id === duo.picker.id ? duo.picked : duo.picker;
+                  return self.id === duo.picker.id ? duo.picked : duo.picker;
                 }
                 return;
               });
