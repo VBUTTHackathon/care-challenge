@@ -64,16 +64,16 @@ module.exports = {
         currUser.duo = null;
         return currUser.save()
           .then(function () {
-            return Duo.findOne(duoId).populate('picker');
+            return Duo.findOne(duoId).populate('picked');
           });
       }).then(function (duo) {
         var duoId = duo.id;
-        var picker = duo.picker;
-        picker.state = "none";
-        picker.duo = null;
-        return picker.save()
+        var picked = duo.picked;
+        picked.state = "none";
+        picked.duo = null;
+        return picked.save()
           .then(function () {
-            return  Duo.destroy(duo);
+            return  Duo.destroy(duoId);
           });
       }).then(function () {
         return res.json(200, {
@@ -104,12 +104,15 @@ module.exports = {
                 picker: currUserId,
                 picked: partnerId
               })
-              .then(function () {
+              .then(function (duo) {
+                currUser.duo = duo.id;
                 currUser.state = 'chose';
-                return currUser.save();
-              }).then(function () {
-                partner.state = 'chosen';
-                return partner.save();
+                return currUser.save()
+                  .then(function () {
+                    partner.duo = duo.id;
+                    partner.state = 'chosen';
+                    return partner.save();
+                  });
               }).then(function () {
                 return res.json(200, {
                   message: "You have selected " + partner.username + " as a partner, waiting for his/her confirmation."
