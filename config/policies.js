@@ -40,13 +40,12 @@ module.exports.policies = {
       index: ['isAuthenticated','isAdmin']
     },
     DuoController: {
-      '*':  ['isAuthenticated']
+      '*':  ['isAuthenticated'],
+      duos: ['isAuthenticated','isAdmin']
     },
-	// RabbitController: {
-    /*AdminController: {
-      '*': false,
-      index: ['isAuthenticated','isAdmin']
-    },*/
+    UserController: {
+      '*': ['isAuthenticated']
+    },
     HomeController: {
       '*': false,
       index: ['isAuthenticated']
