@@ -21,12 +21,10 @@ module.exports = {
       .then(function (duos) {
         res.json({
           data: duos.map(function (duo) {
-            var name1 = duo.picker.firstName + " " + (duo.picker.lastName || "");
-            var name2 = duo.picked.firstName + " " + (duo.picked.lastName || "");
             return { partnerId1: duo.picker.id,
                      partnerId2: duo.picked.id,
-                     partnerName1: name1,
-                     partnerName2: name2 };
+                     partnerName1: duo.picker.fullName(),
+                     partnerName2: duo.picked.fullName() };
           })
         });
       });

@@ -35,6 +35,9 @@ module.exports = {
         duo: {
             model: 'duo'
         },
+        fullName: function() {
+            return (this.firstName || "") + (this.lastName ? " " + this.lastName : "");
+        },
         toJSON: function() {
             var obj = this.toObject();
             return {id: obj.id,
