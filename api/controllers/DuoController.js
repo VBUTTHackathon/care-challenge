@@ -107,8 +107,13 @@ module.exports = {
   pickPartner: function (req, res) {
     var partnerId = req.param('id');
     var currUserId = req.user.id;
-    getUserById(currUserId)
+
+    return getUserById(currUserId)
       .then(function (currUser) {
+        if (partnerId == currUserId) {
+          throw new CustomError("You can't be your own partner.");
+        }
+
         if (currUser.state === 'chose') {
           throw new CustomError("You have already picked your partner.");
         } else if (currUser.state === 'chosen') {
