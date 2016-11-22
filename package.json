@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "db-migrate": "^0.10.0-beta.20",
     "ejs": "2.3.4",
     "express-flash": "0.0.2",
     "grunt": "1.0.1",
@@ -22,8 +23,10 @@
     "include-all": "~0.1.6",
     "passport": "^0.3.2",
     "passport-ldapauth": "^0.6.0",
+    "pg": "^6.1.0",
     "rc": "1.0.1",
     "sails": "~0.12.4",
+    "sails-db-migrate": "^1.4.0",
     "sails-disk": "~0.10.9",
     "sails-postgresql": "^0.11.4"
   },
