@@ -11,9 +11,12 @@ module.exports = {
       return res.redirect('/admin');
     }
     var state = req.user.state;
+
     if(state !== "none"){
-      var partner = req.user.getPartner();
-      return res.view('homepage',{state:state,partner:partner});
+      return req.user.getPartner()
+      .then(function(partner){
+        return res.view('homepage',{state:state,partner:partner});
+      })
     }
     return res.view('homepage',{state:state});
   },
