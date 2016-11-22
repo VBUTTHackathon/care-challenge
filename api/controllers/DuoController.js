@@ -21,7 +21,8 @@ module.exports = {
       .then(function (duos) {
         res.json({
           data: duos.map(function (duo) {
-            return { partnerId1: duo.picker.id,
+            return { confirmed: duo.confirmed ? 'Yes' : 'No',
+                     partnerId1: duo.picker.id,
                      partnerId2: duo.picked.id,
                      partnerName1: duo.picker.fullName(),
                      partnerName2: duo.picked.fullName() };
@@ -44,7 +45,7 @@ module.exports = {
         picker.state = "confirmed";
         return picker.save()
           .then(function () {
-            duo.state = "twosides";
+            duo.confirmed = true;
             return duo.save();
           });
       }).then(function () {
