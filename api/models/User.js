@@ -8,6 +8,10 @@
 module.exports = {
 
     attributes: {
+        employeeId:{
+          type: 'integer',
+          required: true
+        },
         email:{
           type: 'string'
         },
@@ -23,7 +27,20 @@ module.exports = {
         fullName:{
           type: 'string'
         },
+        team:{
+          type: 'string'
+        },
+        channel:{
+          type: 'string'
+        },
+        category:{
+          type: 'string'
+        },
         isAdmin:{
+          type: 'boolean',
+          defaultsTo: false
+        },
+        active:{
           type: 'boolean',
           defaultsTo: false
         },
@@ -36,7 +53,7 @@ module.exports = {
             model: 'duo'
         },
         fullName: function() {
-            return (this.firstName || "") + (this.lastName ? " " + this.lastName : "");
+            return this.fullName || ((this.firstName || "") + (this.lastName ? " " + this.lastName : ""));
         },
         toJSON: function() {
             var obj = this.toObject();
