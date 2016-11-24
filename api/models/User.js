@@ -10,6 +10,7 @@ module.exports = {
     attributes: {
         employeeId:{
           type: 'integer',
+          unique: true,
           required: true
         },
         email:{
