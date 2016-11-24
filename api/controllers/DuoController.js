@@ -22,10 +22,10 @@ module.exports = {
         res.json({
           data: duos.map(function (duo) {
             return { confirmed: duo.confirmed ? 'Yes' : 'No',
-                     partnerId1: duo.picker.id,
-                     partnerId2: duo.picked.id,
-                     partnerName1: duo.picker.fullName(),
-                     partnerName2: duo.picked.fullName() };
+                     partnerId1: duo.picker.employeeId,
+                     partnerId2: duo.picked.employeeId,
+                     partnerName1: duo.picker.getFullName(),
+                     partnerName2: duo.picked.getFullName() };
           })
         });
       });
