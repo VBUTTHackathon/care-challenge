@@ -52,7 +52,7 @@ module.exports = {
         duo: {
             model: 'duo'
         },
-        fullName: function() {
+        getFullName: function() {
             return this.fullName || ((this.firstName || "") + (this.lastName ? " " + this.lastName : ""));
         },
         toJSON: function() {
