@@ -62,6 +62,8 @@ module.exports = {
                     username: obj.username,
                     firstName: obj.firstName,
                     lastName: obj.lastName,
+                    fullName: this.getFullName(),
+                    team: obj.team,
                     button: '<input type="button" onClick="pickPartner('+obj.id+')" id="picker-'+obj.id+'" class="btn btn-info picker" value="Pick as a partner">'
             };
         },
